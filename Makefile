@@ -42,7 +42,8 @@ CFLAGS			=	-Wall -Wextra
 CFLAGS			+=	-ggdb3
 CFLAGS			+=	-O3
 CFLAGS			+=	-fno-tree-loop-distribute-patterns
-CFLAGS			+=	-fdata-sections -ffunction-sections
+CFLAGS			+=	-fdata-sections
+CFLAGS			+=	-ffunction-sections
 CFLAGS			+=	-Wl,--gc-sections
 
 

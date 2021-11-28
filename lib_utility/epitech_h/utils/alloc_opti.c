@@ -7,7 +7,6 @@
 
 #include "alloc_opti.h"
 
-
 ez_heap_t *new_hp_lst_node(ez_heap_t *prev)
 {
     ez_heap_t *new_node = (ez_heap_t *) malloc(sizeof(ez_heap_t));
