@@ -7,7 +7,7 @@
 
 #include "alloc_opti.h"
 
-/* TODO: handle alreay free */
+/* TODO(#1): handle alreay free ptr */
 
 ez_heap_t *new_hp_lst_node(ez_heap_t *prev)
 {
