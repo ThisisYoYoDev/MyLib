@@ -18,6 +18,9 @@ int compare_string(list_t *a, list_t *b)
     return my_strcmp(((data_t *)a->data)->str, ((data_t *)b->data)->str);
 }
 
+// TODO(#3): repair sort function
+// Don't work.
+
 void sort_size(tailhead_t *head)
 {
     list_t *node = TAILQ_FIRST(head);
