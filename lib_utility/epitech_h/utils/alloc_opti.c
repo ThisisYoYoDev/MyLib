@@ -7,9 +7,6 @@
 
 #include "alloc_opti.h"
 
-// TODO(#2): handle alreay free ptr
-// function : free_all_heap
-// check if alreay free, if do nothing
 
 ez_heap_t *new_hp_lst_node(ez_heap_t *prev)
 {
