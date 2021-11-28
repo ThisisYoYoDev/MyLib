@@ -23,7 +23,6 @@ void *mallocate(size_t size);
 void free_all_heap(void);
 
 ez_heap_t **place_return_list(void *ptr);
-ez_heap_t *get_hp_lst(void);
 ez_heap_t *new_hp_lst_node(ez_heap_t *prev);
 
 
