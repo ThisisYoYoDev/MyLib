@@ -11,6 +11,7 @@ PUBLIB_NAME		=	y_publib.a
 STDIO_NAME		=	y_stdio.a
 STDLIB_NAME		=	y_stdlib.a
 STRING_NAME		=	y_string.a
+YOYO_NAME		=	y_yoyolib.a
 
 SRCS_CTYPE		=	$(wildcard lib_utility/ctype_h/*.c)
 OBJS_CTYPE		=	${SRCS_CTYPE:.c=.o}
@@ -47,7 +48,7 @@ CFLAGS			+=	-ffunction-sections
 CFLAGS			+=	-Wl,--gc-sections
 
 
-all:	${CTYPE_NAME} ${EPITECH_NAME} ${PUBLIB_NAME} ${STDIO_NAME} ${STDLIB_NAME} ${STRING_NAME}
+all:	${CTYPE_NAME} ${EPITECH_NAME} ${PUBLIB_NAME} ${STDIO_NAME} ${STDLIB_NAME} ${STRING_NAME} yoyolib
 
 ${CTYPE_NAME}:	${OBJS_CTYPE}
 			ar -rcs ${CTYPE_NAME} ${OBJS_CTYPE}
@@ -67,6 +68,10 @@ ${STDLIB_NAME}:	${OBJS_STDLIB}
 ${STRING_NAME}:	${OBJS_STRING}
 			ar -rcs ${STRING_NAME} ${OBJS_STRING}
 
+yoyolib:
+			ar -rcs ${YOYO_NAME} ${OBJS_CTYPE} ${OBJS_EPITECH} ${OBJS_PUBLIB} ${OBJS_STDIO} ${OBJS_STDLIB} ${OBJS_STRING}
+
+
 %.o:%.c
 			${CC} -c ${CFLAGS} -o $@ $< -I ${HEADER}
 
@@ -74,7 +79,7 @@ clean:
 			${RM} ${OBJS_CTYPE} ${OBJS_EPITECH} ${OBJS_PUBLIB} ${OBJS_STDIO} ${OBJS_STDLIB} ${OBJS_STRING}
 
 fclean:		clean
-			${RM} ${CTYPE_NAME} ${EPITECH_NAME} ${PUBLIB_NAME} ${STDIO_NAME} ${STDLIB_NAME} ${STRING_NAME}
+			${RM} ${CTYPE_NAME} ${EPITECH_NAME} ${PUBLIB_NAME} ${STDIO_NAME} ${STDLIB_NAME} ${STRING_NAME} ${YOYO_NAME}
 
 re:			fclean all
 
