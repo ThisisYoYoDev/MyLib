@@ -10,6 +10,8 @@
 
 #include <stdlib.h>
 
+// TODO: call in destructor attribute (__attribute__((destructor)))
+
 typedef struct ptr_list_s {
     void *ptr;
     struct ptr_list_s *last_list;
@@ -21,6 +23,7 @@ void *callocate(size_t nmemb, size_t size);
 void *mallocate(size_t size);
 
 void free_all_heap(void);
+void free_check(void *ptr);
 
 ez_heap_t **place_return_list(void *ptr);
 ez_heap_t *new_hp_lst_node(ez_heap_t *prev);

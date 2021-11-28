@@ -17,7 +17,7 @@ void remove_index(tailhead_t *head, int index)
     {
         if (i == index) {
             TAILQ_REMOVE(head, node, entries);
-            free(node);
+            free_check(node);
             return;
         }
         i++;
@@ -32,15 +32,16 @@ void remove_value(tailhead_t *head, void *value)
     {
         if (node->data == value) {
             TAILQ_REMOVE(head, node, entries);
-            free(node);
+            free_check(node);
             return;
         }
     }
 }
 
-void append_tailq(void *value, list_t *node, tailhead_t *head)
+void append_tailq(void *value, tailhead_t *head)
 {
-    node = mallocate(sizeof(list_t));
+    list_t *node = mallocate(sizeof(list_t));
+
     if (node == NULL) {
         return;
     }

@@ -13,17 +13,17 @@
 
 ez_heap_t *new_hp_lst_node(ez_heap_t *prev)
 {
-    ez_heap_t *newNode = (ez_heap_t *) malloc(sizeof(ez_heap_t));
+    ez_heap_t *new_node = (ez_heap_t *) malloc(sizeof(ez_heap_t));
 
-    if (!newNode) {
+    if (!new_node) {
         return NULL;
     }
-    newNode->last_list = NULL;
-    newNode->prev = prev;
+    new_node->last_list = NULL;
+    new_node->prev = prev;
     if (prev) {
-        newNode->last_list = prev->last_list;
+        new_node->last_list = prev->last_list;
     }
-    return newNode;
+    return new_node;
 }
 
 ez_heap_t **place_return_list(void *ptr)
@@ -39,12 +39,36 @@ ez_heap_t **place_return_list(void *ptr)
     return &curr;
 }
 
+void free_check(void *ptr)
+{
+    ez_heap_t **head = place_return_list(NULL);
+    ez_heap_t *curr = *head;
+    ez_heap_t *next = NULL;
+
+    while (curr) {
+        if (curr->ptr == ptr) {
+            free(curr->ptr);
+            if (next)
+                next->prev = curr->prev;
+            *head = (*head == curr) ? NULL : *head;
+            free(curr);
+            return;
+        }
+        next = curr;
+        curr = curr->prev;
+    }
+    if (ptr)
+        free(ptr);
+}
+
 void free_all_heap(void)
 {
     ez_heap_t **end_ptr = place_return_list(NULL);
     ez_heap_t *end = *end_ptr;
-    ez_heap_t *last_list = end->last_list;
 
+    if (!end) {
+        return;
+    }
     for (ez_heap_t *curr = NULL; end->prev; free(curr)) {
         curr = end;
         if (end->ptr) {
@@ -55,7 +79,6 @@ void free_all_heap(void)
     }
     free(end->ptr);
     free(end);
-    *end_ptr = (last_list) ? last_list : NULL;
 }
 
 void *mallocate(size_t size)

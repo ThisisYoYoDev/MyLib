@@ -28,14 +28,13 @@ typedef struct tailhead_s {
     list_t **tqh_last;
 } tailhead_t;
 
-
-void free_tailq(list_t *node, tailhead_t *head);
-void print_list(list_t *item, tailhead_t *head);
+void free_tailq(tailhead_t *head);
+void print_list(tailhead_t *head);
 void remove_first(tailhead_t *head);
 void remove_last(tailhead_t *head);
 void remove_index(tailhead_t *head, int index);
 void remove_value(tailhead_t *head, void *value);
-void append_tailq(void *value, list_t *node, tailhead_t *head);
+void append_tailq(void *value, tailhead_t *head);
 int index_value(tailhead_t *head, void *value);
 
 
