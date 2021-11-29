@@ -218,6 +218,4 @@ char *my_strndup(char *s, int size)
 char *my_strncat(char *dest, char const *src, int nb)
 int my_strncmp(char const *s1, char const *s2, int n)
 char *my_strstr(char *str, char const *to_find)
-
-
-```c
+```
