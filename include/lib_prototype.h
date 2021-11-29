@@ -10,7 +10,6 @@
 
 #include "macro_and_define.h"
 
-int my_isneg(int nb);
 int my_getnbr(char const *str);
 void my_sort_int_array(int *tab, int size);
 int my_compute_power_rec(int nb, int power);

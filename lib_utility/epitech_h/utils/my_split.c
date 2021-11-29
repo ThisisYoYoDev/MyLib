@@ -47,7 +47,7 @@ char **split(char *str, const char *delim, int *count)
         return NULL;
     token = y_strtok(str, delim);
     while (token != NULL) {
-        tab = my_realloc(tab, sizeof(char *) * (i + 2));
+        tab = realloc(tab, sizeof(char *) * (i + 2));
         tab[i] = token;
         token = y_strtok(NULL, delim);
         i++;
